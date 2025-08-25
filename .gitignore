@@ -1,0 +1,10 @@
+# .gitignore — keeps generated files & local env artifacts out of git history
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/

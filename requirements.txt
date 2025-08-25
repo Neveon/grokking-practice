@@ -1,0 +1,6 @@
+# requirements.txt — Python packages preinstalled in the image
+# This keeps `pip install` out of your daily loop and makes your environment reproducible.
+# Add/remove as you see fit
+pytest
+black
+ruff

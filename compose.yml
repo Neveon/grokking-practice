@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+# compose.yml — "How to run it" locally on Mac and Windows (WSL2)
+# - Builds the image from Dockerfile (Python 3.13, Neovim, LunarVim, etc.)
+# - Mounts your repo into /app so edits on your host show up in the container
+# - Starts an interactive zsh shell by default
+# - No ports (Unless we need Jupyter)
+# Usage examples:
+#   docker compose build
+#   docker compose run --rm app zsh        # interactive shell
+#   docker compose run --rm app python -V  # quick check
+#   docker compose run --rm app lvim       # launch LunarVim
+# ------------------------------------------------------------------------------
+services:
+  app:
+    build:
+      context: .
+      args:
+        PYVER: "3.13"        # Keep this in sync with Dockerfile default unless you want to pin another
+    volumes:
+      - .:/app               # Your code on host <-> /app in container
+    working_dir: /app
+    tty: true                # Interactive terminal
+    stdin_open: true         # Keep STDIN open for shells/editors
+    environment:
+      - TERM=xterm-256color  # Good terminal defaults for Neovim/LunarVim color
+    command: zsh -l          # Start a login zsh (Oh My Zsh will load)

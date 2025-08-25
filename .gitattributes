@@ -1,0 +1,9 @@
+# .gitattributes — normalize line endings across Mac/Windows to avoid CRLF headaches
+* text=auto
+
+# Force LF on common dev files so scripts run the same way on both OSes
+*.py text eol=lf
+*.sh text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf

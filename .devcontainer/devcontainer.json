@@ -1,0 +1,22 @@
+// devcontainer.json — VS Code: open the repo *inside* the container automatically.
+// This gives you the same Python/LunarVim/Node/etc. regardless of host OS.
+// VS Code accepts JSON with comments here (JSONC).
+{
+  "name": "grokking-python",
+  "dockerComposeFile": ["../compose.yml"],   // Reuse our compose service
+  "service": "app",
+  "workspaceFolder": "/app",
+  // Optional: run a quick check when the container spins up
+  "postCreateCommand": "python -V && pip -V && lvim --version || true",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-python.black-formatter",
+        "GitHub.vscode-pull-request-github"
+      ]
+    }
+  }
+}

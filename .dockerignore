@@ -1,0 +1,14 @@
+# .dockerignore — keeps large/unnecessary files out of the build context for faster builds
+.git
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv
+.env
+dist/
+build/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
