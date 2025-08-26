@@ -16,7 +16,7 @@ docker compose run --rm app zsh
 docker compose run --rm app lvim
 
 # Run tests
-docker compose run --rm app pytest
+docker compose run --rm app pytest -v
 
 # Check arch (arm64 on M-series, x86_64 on Windows)
 docker compose run --rm app python -c "import platform; print(platform.machine())
