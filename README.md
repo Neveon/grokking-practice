@@ -37,3 +37,9 @@ docker compose run --rm app lvim README.md
 # Rebuild after changing Dockerfile/requirements.txt
 docker compose build --no-cache
 ```
+
+---
+
+# Gotchas
+
+- Sliding Window: Problem Challenge 1, 3 & 4
