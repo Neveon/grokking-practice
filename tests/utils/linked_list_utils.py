@@ -4,13 +4,11 @@ class Node:
         self.next = next
 
 
-def build_linked_list(values):
+def build_linked_list(values: list[int]) -> tuple[Node, list[Node]]:
     """
     Builds a linked list from a list of values.
     Returns (head, nodes) where nodes is a list of Node objects.
     """
-    if not values:
-        return None, []
 
     head = Node(values[0])
     nodes = [head]
@@ -21,3 +19,13 @@ def build_linked_list(values):
         nodes.append(current)
 
     return head, nodes
+
+def linked_list_to_values(head):
+    """Helper: walk the linked list and return all values as a list."""
+    values = []
+    current = head
+    while current:
+        values.append(current.value)
+        current = current.next
+    return values
+
