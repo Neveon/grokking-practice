@@ -1,4 +1,6 @@
 """
+EASY
+
 Given an array, find the average of all contigious subarray of size 'K' in it.
 """
 
