@@ -53,3 +53,30 @@ def no_repeat_substring(string):
 # Time Complexity O(N)
 # Space Complexity O(K) where K is the number of distinct characters in the string.
 # But if we have a limited amount of characters (26 letters in english) then we can argue we have O(1) space
+
+# INDEX MAP SOLUTION
+def no_repeat_substring_index_map(s: str) -> int:
+    # Dictionary to remember the last index where each character appeared
+    last_seen = {}
+
+    # Starting index of our current window
+    window_start = 0
+
+    # Track the maximum length found so far
+    max_length = 0
+
+    # Expand the window one character at a time
+    for window_end, char in enumerate(s):
+        # If we've seen this char before and it's inside the current window
+        if char in last_seen and last_seen[char] >= window_start:
+            # Move the window start to one past the last time we saw this char
+            window_start = last_seen[char] + 1
+
+        # Update the last seen index of the current char
+        last_seen[char] = window_end
+
+        # Update max length of window so far
+        current_length = window_end - window_start + 1
+        max_length = max(max_length, current_length)
+
+    return max_length
