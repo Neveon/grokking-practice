@@ -30,8 +30,8 @@ def squaring_sorted_array(arr):
         left_elem_sq = arr[left] * arr[left]
         right_elem_sq = arr[right] * arr[right]
 
-        # compare absolute value squared, whatever is largest is the next_largest
-        if abs(left_elem_sq) > abs(right_elem_sq):
+        # squared values, whatever is largest is the next_largest
+        if left_elem_sq > right_elem_sq:
             res[next_largest] = left_elem_sq
             left += 1
         else:
