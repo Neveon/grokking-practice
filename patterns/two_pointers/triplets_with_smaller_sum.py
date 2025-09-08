@@ -39,3 +39,25 @@ def triplets_with_smaller_sum(arr, target):
                 hi -= 1
 
     return smallest_triplets
+
+def grokking_triplets_with_smaller_sum(arr, target):
+    arr.sort() # O(N Log N)
+    count = 0
+    for i in range(len(arr)-2):
+        count += search_pair(arr, target - arr[i], i+1)
+
+    return count
+
+def search_pair(arr, target_sum, first):
+    count = 0
+    left, right = first, len(arr) - 1
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum < target_sum: # found triplet
+            # since arr[right] >= arr[left], therefore, we can replace arr[right] by any number between
+            # left and right to get a sum less than the target sum
+            count += right - left
+            left += 1
+        else:
+            right -= 1
+    return count
