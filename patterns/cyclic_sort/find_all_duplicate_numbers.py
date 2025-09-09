@@ -41,18 +41,17 @@ duplicate_numbers = [4, 5]
 # Time Complexity O(N)
 # Space Complexity O(N-1) => O(N) worse case we have almost all duplicates
 def find_all_duplicate_numbers(arr):
+    duplicate_numbers = []
     i = 0
-    duplicate_numbers = list()
 
-    # cyclic sort
     while i < len(arr):
-        if arr[i]-1 != i:
-            j = arr[i] - 1
-            if arr[j] != arr[i]:
-                arr[i], arr[j] = arr[j], arr[i] # swap
-            else: # duplicate found
-                duplicate_numbers.append(arr[i])
-                i += 1
+        j = arr[i] - 1
+        # swap only if element isn't in correct (current) index AND element isn't already placed in the index it is supposed to be in
+        if i != j and arr[i] != arr[j]:
+            arr[i], arr[j] = arr[j], arr[i]
+        elif i != j and arr[i] == arr[j]:
+            duplicate_numbers.append(arr[i])
+            i += 1
         else:
             i += 1
 
