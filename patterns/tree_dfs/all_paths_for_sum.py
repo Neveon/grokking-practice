@@ -15,4 +15,6 @@ def all_paths_for_sum(root: TreeNode | None, sum: int):
     return all_paths_for_sum(root.left, sum - root.value) + all_paths_for_sum(root.right, sum - root.value)
 
 # Time Complexity O(N) we visit every node
-# Space Complexity O(N) worst case if the tree is a Linked List (every node has a single child)
+# Space Complexity
+#   O(N) worst case if the tree is a Linked List (every node has a single child)
+#   O(LogN) if the tree is balanced

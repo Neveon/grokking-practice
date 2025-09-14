@@ -15,7 +15,6 @@ def has_path_recursive(current_node: TreeNode | None, sequence: list[int], seq_i
     if current_node is None:
         return False
 
-    seq_length = len(sequence)
     if seq_index >= len(sequence) or current_node.value != sequence[seq_index]:
         return False
 

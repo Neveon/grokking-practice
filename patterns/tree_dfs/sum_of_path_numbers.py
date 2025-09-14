@@ -23,7 +23,30 @@ Each path returns its own sum which the the path's number
 When we backtrack, current_path.pop() as we go up the call stack
 """
 from tests.utils.tree import TreeNode
+def sum_of_path_numbers(root: TreeNode | None) -> int:
+    return dfs(root, [])
 
+def dfs(node: TreeNode | None, current_path: list[int]) -> int:
+    if node is None:
+        return 0
+
+    current_path.append(node.value)
+
+    if node.left is None and node.right is None:
+        total = register_number(current_path)
+    else:
+        total = dfs(node.left, current_path) + dfs(node.right, current_path)
+
+    current_path.pop()  # backtrack
+    return total
+
+def register_number(path: list[int]) -> int:
+    val = 0
+    for digit in path:
+        val = val * 10 + digit
+    return val
+
+"""
 def sum_of_path_numbers(node: TreeNode | None) -> int:
     return dfs(node, 0, [])
 
@@ -35,7 +58,7 @@ def dfs(node: TreeNode | None, sum: int, current_path: list[int]) -> int:
 
     # found leaf, register number and add to sum
     if node.left is None and node.right is None:
-        sum = path_to_number(current_path)
+        sum = register_number(current_path)
     else:
         sum = dfs(node.left, sum, current_path) + dfs(node.right, sum, current_path)
 
@@ -44,6 +67,14 @@ def dfs(node: TreeNode | None, sum: int, current_path: list[int]) -> int:
 
     return sum
 
+def register_number(path: list[int]) -> int:
+    val = 0
+    for digit in path:
+        val = val * 10 + digit
+
+    return val
+
+OR
 
 def path_to_number(path: list[int]) -> int:
     num = 0
@@ -53,3 +84,4 @@ def path_to_number(path: list[int]) -> int:
         num += path[i] * order_of_magnitude
 
     return num
+"""
