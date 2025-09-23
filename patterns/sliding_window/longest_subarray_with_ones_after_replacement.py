@@ -35,7 +35,7 @@ def longest_subarray_with_ones_after_replacement(arr, k):
         # Which means we have a maximum number of 1s repeating in a given window
         # A window has 1 max_ones_count times and has a remainder of 0s which should be replaced with 1s
         # If the remaining 0s are >k then we need to shrink the window
-        if window_end - window_start + 1 - max_ones_count > k:
+        while window_end - window_start + 1 - max_ones_count > k:
             if arr[window_start] == 1:
                 max_ones_count -= 1
             window_start += 1
@@ -56,7 +56,7 @@ def longest_subarray_with_ones_after_replacement(arr, k):
         if right_ptr == 0:
             zero_counter += 1
         # If we have >k number of 0s then we need to shrink the window
-        if zero_counter > k:
+        while zero_counter > k:
             left_ptr = arr[window_start]
             # Check if window start is 0
             if left_ptr == 0:
